@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git 'https://github.com/Manasa-2023/jenkins-ci-cd-pipeline-nodejs.git'
+                git branch: 'main', url: 'https://github.com/Manasa-2023/jenkins-ci-cd-pipeline-nodejs.git'
             }
         }
 
