@@ -1,7 +1,12 @@
-FROM node:18
+FROM jenkins/jenkins:lts
 
-WORKDIR /app
-COPY . .
-RUN npm install
-EXPOSE 3000
-CMD ["npm", "start"]
+USER root
+
+# Install Node.js and npm
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt-get install -y nodejs
+
+# Optional: verify versions
+RUN node -v && npm -v
+
+USER jenkins
