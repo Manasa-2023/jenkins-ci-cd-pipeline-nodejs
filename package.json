@@ -1,0 +1,11 @@
+{
+  "name": "jenkins-pipeline-demo",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Running dummy test...\" && exit 0"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
