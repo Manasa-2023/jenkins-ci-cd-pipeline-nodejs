@@ -1,13 +1,11 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:18'
+        }
+    }
 
     stages {
-        stage('Clone') {
-            steps {
-                git branch: 'main', url: 'https://github.com/Manasa-2023/jenkins-ci-cd-pipeline-nodejs.git'
-            }
-        }
-
         stage('Build') {
             steps {
                 sh 'npm install'
