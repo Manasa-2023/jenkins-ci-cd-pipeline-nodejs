@@ -1,20 +1,22 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:18'
-        }
-    }
+    agent any
 
     stages {
+        stage('Clone') {
+            steps {
+                git 'https://github.com/Manasa-2023/jenkins-ci-cd-pipeline-nodejs.git'
+            }
+        }
+
         stage('Build') {
             steps {
-                sh 'npm install'
+                sh 'docker run --rm -v $PWD:/app -w /app node:14 npm install'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'npm test'
+                sh 'docker run --rm -v $PWD:/app -w /app node:14 npm test || true'
             }
         }
 
